@@ -30,4 +30,8 @@ public class Scene {
     public void resize(int width, int height) {
         projection.updateProjMatrix(width, height);
     }
+
+    public Projection getProjection() {
+        return projection;
+    }
 }
