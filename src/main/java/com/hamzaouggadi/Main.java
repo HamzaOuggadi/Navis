@@ -10,6 +10,7 @@ import com.hamzaouggadi.utils.StartupHelper;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
 
+import java.nio.file.FileSystems;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,7 +136,9 @@ public class Main implements IAppLogic {
                 4, 6, 7, 5, 4, 7,
         };
 
-        Texture texture = scene.getTextureCache().createTexture("/Users/hamzaouggadi/IdeaProjects/Navis/src/main/resources/models/cube/cube.png");
+        Texture texture = scene.getTextureCache().createTexture(
+                FileSystems.getDefault().getPath("").toAbsolutePath()
+                + "/src/main/resources/models/cube/cube.png");
         Material material = new Material();
         material.setTexturePath(texture.getTexturePath());
         List<Material> materialList = new ArrayList<>();

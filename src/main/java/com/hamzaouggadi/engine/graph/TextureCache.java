@@ -1,11 +1,12 @@
 package com.hamzaouggadi.engine.graph;
 
+import java.nio.file.FileSystems;
 import java.util.HashMap;
 import java.util.Map;
 
 public class TextureCache {
 
-    public static final String DEFAULT_TEXTURE = "/Users/hamzaouggadi/IdeaProjects/Navis/src/main/resources/models/default/default_texture.png";
+    public static final String DEFAULT_TEXTURE = FileSystems.getDefault().getPath("").toAbsolutePath() + "/src/main/resources/models/default/default_texture.png";
     private Map<String, Texture> textureMap;
 
     public TextureCache() {
