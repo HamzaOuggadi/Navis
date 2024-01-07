@@ -1,5 +1,6 @@
 package com.hamzaouggadi.engine;
 
+import com.hamzaouggadi.engine.input.MouseInput;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.system.MemoryUtil;
@@ -18,6 +19,7 @@ public class Window {
     private int height;
     private int width;
     private Callable<Void> resizeFunc;
+    private MouseInput mouseInput;
 
 
     public Window(String title, WindowOptions opts, Callable<Void> resizeFunc) {
@@ -46,13 +48,12 @@ public class Window {
         }
 
         // Checking if preferred width and height are set, if not, we use the primary monitor dimensions
-        if (opts.width > 0 && opts.height> 0) {
+        if (opts.width > 0 && opts.height > 0) {
             this.width = opts.width;
             this.height = opts.height;
         } else {
             glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
             GLFWVidMode vidMode = glfwGetVideoMode(glfwGetPrimaryMonitor());
-            assert vidMode != null;
             width = vidMode.width();
             height = vidMode.height();
         }
@@ -88,6 +89,7 @@ public class Window {
         width = arrWidth[0];
         height = arrHeight[0];
 
+        mouseInput = new MouseInput(windowHandle);
     }
 
 
@@ -148,6 +150,10 @@ public class Window {
 
     public boolean windowShouldClose() {
         return glfwWindowShouldClose(windowHandle);
+    }
+
+    public MouseInput getMouseInput() {
+        return mouseInput;
     }
 
 
