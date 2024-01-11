@@ -58,6 +58,7 @@ public class Window {
             height = vidMode.height();
         }
 
+
         windowHandle = glfwCreateWindow(width, height, title, NULL, NULL);
 
         if (windowHandle == NULL) {
